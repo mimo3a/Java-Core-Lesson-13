@@ -1,6 +1,7 @@
 package ua.lgs.lviv.deputat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
@@ -88,20 +89,24 @@ public class Fractia {
 			}
 		}
 	}
-	public void bestBrider () {
-		int indexBestBrider = 0;
-		int bestBride = 0;
-		ListIterator<Deputat> iterator = fractia.listIterator();
-		while(iterator.hasNext()) {
-			Deputat next = iterator.next();
-			if(next.getSizeOfBride() > bestBride) {
-				System.out.println(next.getSizeOfBride());
-				bestBride = next.getSizeOfBride();
-				indexBestBrider = iterator.nextIndex() - 1;
-			}
-		}
-		System.out.println(fractia.get(indexBestBrider));
-		
+//	public void bestBrider () {
+//		int indexBestBrider = 0;
+//		int bestBride = 0;
+//		ListIterator<Deputat> iterator = fractia.listIterator();
+//		while(iterator.hasNext()) {
+//			Deputat next = iterator.next();
+//			if(next.getSizeOfBride() > bestBride) {
+//				System.out.println(next.getSizeOfBride());
+//				bestBride = next.getSizeOfBride();
+//				indexBestBrider = iterator.nextIndex() - 1;
+//			}
+//		}
+//		System.out.println(fractia.get(indexBestBrider));
+//		
+//	}
+	public void bestBrider() {
+		Collections.sort(fractia, new DeputatBriderComporator());
+		System.out.println(fractia.get(0));
 	}
 	public void allDeputatsOfFractia () {
 		ListIterator<Deputat> iterator = fractia.listIterator();
